@@ -1,0 +1,36 @@
+.messagesList {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    padding: 8px;
+    overflow-y: scroll;
+}
+.dateBlock {
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    
+    color: rgba(0, 0, 0, 0.5);
+    
+}
+.message {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.creator {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #363A44;
+    border-radius: 25px;
+}
+.messageText {
+    background-color: #363A44;
+    color:white;
+    border-radius: 25px;
+    padding: 9px 16px;
+}

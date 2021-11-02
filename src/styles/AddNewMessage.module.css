@@ -1,0 +1,19 @@
+.form {
+    height: 76px;
+    padding: 25px 22px 26px 64px;
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border-top: 0.25px solid #363A44;
+    border-bottom: 0.25px solid grey;
+    box-sizing: border-box;
+}
+.input {
+    border: none;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 24px;
+}
+input:focus{
+    outline: none;
+}
