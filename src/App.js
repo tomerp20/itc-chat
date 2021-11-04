@@ -1,32 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import styles from './styles/app.module.css'
 import MessagesList from './components/MessagesList'
 import AddNewMessage from './components/AddNewMessage'
-
+import { getFirestore, addDoc, collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import { FirebaseContext } from './utils/Firebase'
+import Chat from './components/Chat';
+import Login from './components/Login'
+import { AuthContext } from './components/AuthContext';
 function App() {
-  const msgs = [
-    { id:1, text:'Hello word', date: Date.now(), userId: 'Febee' },
-    { id:2, text:'Hello word', date: Date.now(), userId: 'Joe' },
-    { id:3, text:'Hello word', date: Date.now(), userId: 'Rachel' },
-    { id:4, text:'Hello word', date: Date.now(), userId: 'Monika' },
-    { id:5, text:'Hello word', date: Date.now(), userId: 'Ross' }
-  ]
-  const [messages, setMessages] = useState([])
-  const addMessage =  async (newMessage) => {
-    setMessages([...messages, newMessage])
+  const [authInfo, setAuthInfo] = useState(null)
+  const logout = () => {
+    setAuthInfo(null)
+    //
   }
   return (
-    <div className={styles.chatContainer}>
-      <div className={styles.TopBar}>
-        <div className={styles.title}>
-          Chat
-        </div>
-        <div className={styles.R}>
-          R
-        </div>
-      </div>
-      <MessagesList messages={messages}/>
-      <AddNewMessage addMessage={addMessage} />
+    <div>
+      <AuthContext.Provider value={{
+        authInfo,
+        login: (userInfo) => setAuthInfo(userInfo),
+        logout,
+      }}>
+        {!authInfo && <Login />}
+        {authInfo && <Chat />}
+      </AuthContext.Provider>
     </div>
   );
 }
