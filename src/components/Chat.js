@@ -4,7 +4,7 @@ import MessagesList from './MessagesList'
 import AddNewMessage from './AddNewMessage'
 import { getFirestore, addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { FirebaseContext } from '../utils/Firebase'
-
+import UploadFile from './UploadFile'
 function Chat() {
   const firebase = useContext(FirebaseContext)
   const db = getFirestore(firebase);
@@ -36,6 +36,7 @@ function Chat() {
   }
   return (
     <div className={styles.chatContainer}>
+      <UploadFile />
       <div className={styles.TopBar}>
         <div className={styles.title}>
           Chat
